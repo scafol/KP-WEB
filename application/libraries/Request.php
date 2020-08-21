@@ -46,7 +46,7 @@ class Request {
 	 * @return Array result from API
 	 * 
 	 * Example :
-	 * get('/insert', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
+	 * postFormData('/insert', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
     public function postFormData($route, $body, $header = []) {
@@ -81,7 +81,7 @@ class Request {
 	 * @return Array result from API
 	 * 
 	 * Example :
-	 * get('/insert', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
+	 * postMultipart('/insert', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
 	public function postMultipart($route, $body, $header = []) {
@@ -116,7 +116,7 @@ class Request {
 	 * @return Array result from API
 	 * 
 	 * Example :
-	 * get('/user/1', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
+	 * put('/user/1', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
     public function put($route, $body, $header = []) {
@@ -150,7 +150,7 @@ class Request {
 	 * @return Array result from API
 	 * 
 	 * Example :
-	 * get('/delete/1', ['Authorization: 123', 'Content-Type: json'])
+	 * delete('/delete/1', ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
     public function delete($route, $header = []) {
