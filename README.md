@@ -1,5 +1,4 @@
-# <center> Scafol Swasta Codeigniter </center>
-Repository for swasta owner and contractor
+# <center> Scafol Web Framework Base For Codeigniter </center>
 
 This repository contains custom library for network request
 
