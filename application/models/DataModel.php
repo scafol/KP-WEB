@@ -6,12 +6,12 @@ class DataModel extends CI_Model
     {
         if (isset($_POST['submit']) && $_POST['keyword'] != "") {
             return $this->request->get(
-                '/posts',
-                ['userId' => $_POST['keyword']],
+                '/photos',
+                ['albumId' => $_POST['keyword']],
             );
         } else {
             return $this->request->get(
-                '/posts',
+                '/photos',
             );
         }
     }

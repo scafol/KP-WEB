@@ -7,7 +7,7 @@
 
             <form action="<?= base_url('/'); ?>" method="post" class="d-flex" style="width: 100%;">
                 <div class="input-group">
-                    <input name="keyword" type="text" class="form-control" placeholder="Input User_id">
+                    <input name="keyword" type="text" class="form-control" placeholder="Input Album_id">
                     <div class="input-group-append">
                         <button class="btn btn-dark" type="submit" name="submit">Search</button>
                     </div>
@@ -20,16 +20,16 @@
                         <th scope="col">Id</th>
                         <th scope="col">User_id</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Body</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($data as $data) : ?>
                         <tr>
-                            <th scope="row"><?= $data['id']; ?></th>
-                            <td class="text-center"><?= $data['userId']; ?></td>
+                            <th class="id" scope="row"><?= $data['id']; ?></th>
+                            <td class="text-center"><?= $data['albumId']; ?></td>
                             <td><?= $data['title']; ?></td>
-                            <td><?= $data['body']; ?></td>
+                            <td><a href="<?= base_url('home/detail/' . $data['id']); ?>" class="btn btn-sm btn-primary">Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
