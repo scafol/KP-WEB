@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col">
 
-            <form action="<?= base_url('/'); ?>" method="post" class="d-flex" style="width: 100%;">
+            <form action="<?= base_url('/'); ?>" method="post" class="d-flex" style="width: 40%;">
                 <div class="input-group">
-                    <input name="keyword" type="text" class="form-control" placeholder="Input Album_id">
+                    <input name="keyword" type="number" class="form-control" placeholder="Search by Album_id">
                     <div class="input-group-append">
                         <button class="btn btn-dark" type="submit" name="submit">Search</button>
                     </div>
@@ -18,7 +18,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">User_id</th>
+                        <th scope="col">Album_id</th>
                         <th scope="col">Title</th>
                         <th scope="col">Action</th>
                     </tr>
