@@ -1,7 +1,8 @@
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Request {
+class Request
+{
 
 	/**
 	 * Request with http method GET
@@ -19,19 +20,20 @@ class Request {
 	 * get('/users', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
-	public function get($route, $query = [], $header = []) {
+	public function get($route, $query = [], $header = [])
+	{
 		$curl = curl_init();
 		curl_setopt_array($curl, [
 			CURLOPT_URL => API_URL . $route . '?' . http_build_query($query),
-            CURLOPT_HTTPHEADER => $header,
-            CURLOPT_RETURNTRANSFER => TRUE
+			CURLOPT_HTTPHEADER => $header,
+			CURLOPT_RETURNTRANSFER => TRUE
 		]);
 
-        $result = curl_exec($curl);
-        curl_close($curl);
+		$result = curl_exec($curl);
+		curl_close($curl);
 
 		return json_decode($result, TRUE);
-    }
+	}
 
 	/**
 	 * Request with http method POST application/x-www-form-urlencoded
@@ -49,25 +51,29 @@ class Request {
 	 * postFormData('/insert', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
-    public function postFormData($route, $body, $header = []) {
-        $curl = curl_init();
+	public function postFormData($route, $body, $header = [])
+	{
+		$body = json_encode($body);
+
+		$curl = curl_init();
 		curl_setopt_array($curl, [
 			CURLOPT_URL => API_URL . $route,
+			// CURLOPT_HTTPHEADER => $header,
 			CURLOPT_HTTPHEADER => array_merge(
-				['Content-Type: application/x-www-form-urlencoded'],
+				['Content-Type: application/json'],
 				$header
 			),
 			CURLOPT_POST => TRUE,
-            CURLOPT_POSTFIELDS => $body,
-            CURLOPT_RETURNTRANSFER => TRUE
+			CURLOPT_POSTFIELDS => $body,
+			CURLOPT_RETURNTRANSFER => TRUE
 		]);
 
-        $result = curl_exec($curl);
-        curl_close($curl);
+		$result = curl_exec($curl);
+		curl_close($curl);
 
-        return json_decode($result, TRUE);
+		return json_decode($result, TRUE);
 	}
-	
+
 	/**
 	 * Request with http method POST multipart/form-data
 	 *
@@ -84,8 +90,9 @@ class Request {
 	 * postMultipart('/insert', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
-	public function postMultipart($route, $body, $header = []) {
-        $curl = curl_init();
+	public function postMultipart($route, $body, $header = [])
+	{
+		$curl = curl_init();
 		curl_setopt_array($curl, [
 			CURLOPT_URL => API_URL . $route,
 			CURLOPT_HTTPHEADER => array_merge(
@@ -93,15 +100,15 @@ class Request {
 				$header
 			),
 			CURLOPT_POST => TRUE,
-            CURLOPT_POSTFIELDS => $body,
-            CURLOPT_RETURNTRANSFER => TRUE
+			CURLOPT_POSTFIELDS => $body,
+			CURLOPT_RETURNTRANSFER => TRUE
 		]);
 
-        $result = curl_exec($curl);
-        curl_close($curl);
+		$result = curl_exec($curl);
+		curl_close($curl);
 
-        return json_decode($result, TRUE);
-    }
+		return json_decode($result, TRUE);
+	}
 
 	/**
 	 * Request with http method PUT
@@ -119,24 +126,27 @@ class Request {
 	 * put('/user/1', ['age' => 14, 'team' => 'development], ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
-    public function put($route, $body, $header = []) {
+	public function put($route, $body, $header = [])
+	{
+		$body = json_encode($body);
+
 		$curl = curl_init();
 		curl_setopt_array($curl, [
 			CURLOPT_URL => API_URL . $route,
 			CURLOPT_HTTPHEADER => array_merge(
-				['Content-Type: application/x-www-form-urlencoded'],
+				['Content-Type: application/json'],
 				$header
 			),
 			CURLOPT_CUSTOMREQUEST => "PUT",
-            CURLOPT_POSTFIELDS => $body,
-            CURLOPT_RETURNTRANSFER => TRUE
+			CURLOPT_POSTFIELDS => $body,
+			CURLOPT_RETURNTRANSFER => TRUE
 		]);
 
-        $result = curl_exec($curl);
-        curl_close($curl);
+		$result = curl_exec($curl);
+		curl_close($curl);
 
 		return json_decode($result, TRUE);
-    }
+	}
 
 	/**
 	 * Request with http method DELETE
@@ -153,8 +163,9 @@ class Request {
 	 * delete('/delete/1', ['Authorization: 123', 'Content-Type: json'])
 	 * 
 	 */
-    public function delete($route, $header = []) {
-        $curl = curl_init();
+	public function delete($route, $header = [])
+	{
+		$curl = curl_init();
 		curl_setopt_array($curl, [
 			CURLOPT_URL => API_URL . $route,
 			CURLOPT_HTTPHEADER => array_merge(
@@ -162,14 +173,12 @@ class Request {
 				$header
 			),
 			CURLOPT_CUSTOMREQUEST => "DELETE",
-            CURLOPT_RETURNTRANSFER => TRUE
+			CURLOPT_RETURNTRANSFER => TRUE
 		]);
 
-        $result = curl_exec($curl);
-        curl_close($curl);
+		$result = curl_exec($curl);
+		curl_close($curl);
 
 		return json_decode($result, TRUE);
-    }
+	}
 }
-
-?>

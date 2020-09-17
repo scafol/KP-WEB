@@ -30,4 +30,24 @@ class Home extends CI_Controller
 		$this->load->view('home/detail', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function add()
+	{
+		$data['title'] = "Add Member";
+		$data['data'] = $this->DataModel->addData();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('home/addform', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function edit()
+	{
+		$data['title'] = "Edit Member";
+		$data['data'] = $this->DataModel->editData();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('home/editform', $data);
+		$this->load->view('templates/footer');
+	}
 }

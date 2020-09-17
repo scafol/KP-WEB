@@ -5,14 +5,23 @@
     <div class="row">
         <div class="col">
 
-            <form action="<?= base_url('/'); ?>" method="post" class="d-flex" style="width: 40%;">
-                <div class="input-group">
-                    <input name="keyword" type="number" class="form-control" placeholder="Search by Album_id">
-                    <div class="input-group-append">
-                        <button class="btn btn-dark" type="submit" name="submit">Search</button>
-                    </div>
+            <div class="row justify-content-between">
+                <div class="col-5">
+                    <form action="<?= base_url('/'); ?>" method="post" class="d-flex" style="width: 100%;">
+                        <div class="input-group">
+                            <input name="keyword" type="number" class="form-control" placeholder="Search by Album_id">
+                            <div class="input-group-append">
+                                <button class="btn btn-dark" type="submit" name="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+                <div class="col-4 text-right">
+                    <a id="add" href="<?= base_url('home/add'); ?>" class="btn btn-primary mr-3">Add Data</a>
+                    <a id="add" href="<?= base_url('home/edit'); ?>" class="btn btn-primary mr-3">Edit Data</a>
+                </div>
+            </div>
+
 
             <table class="table table-hover my-3">
                 <thead>
@@ -29,7 +38,7 @@
                             <th class="id" scope="row"><?= $data['id']; ?></th>
                             <td class="text-center"><?= $data['albumId']; ?></td>
                             <td><?= $data['title']; ?></td>
-                            <td><a href="<?= base_url('home/detail/' . $data['id']); ?>" class="btn btn-sm btn-primary">Detail</a></td>
+                            <td><a href="<?= base_url('home/detail/' . $data['id']); ?>" class="btn btn-sm btn-dark">Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
